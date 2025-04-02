@@ -4,12 +4,12 @@
     "description": "Node-RED on Render.com",
     "main": "node_modules/node-red/red.js",
     "scripts": {
-    "start": "node-red"
+        "start": "node-red"
     },
     "dependencies": {
-    "node-red": "^3.1.0"
+        "node-red": "^3.1.0"
     },
     "engines": {
-    "node": ">=18.x"
+        "node": "18.x"
     }
 }
