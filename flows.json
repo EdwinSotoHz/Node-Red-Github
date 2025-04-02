@@ -23,6 +23,280 @@
         ]
     },
     {
+        "id": "2adaf70baceee3df",
+        "type": "debug",
+        "z": "34dce6c838a0bcbd",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "7d194cc8267cfdd8",
+        "type": "ui_gauge",
+        "z": "34dce6c838a0bcbd",
+        "name": "Humidity Level",
+        "group": "2b9c08c8f953350b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Humedad Relativa",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 600,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "0c923fce434cc936",
+        "type": "ui_chart",
+        "z": "34dce6c838a0bcbd",
+        "name": "",
+        "group": "2b9c08c8f953350b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Humedad en el tiempo",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 620,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "70649052f981115b",
+        "type": "ui_text",
+        "z": "34dce6c838a0bcbd",
+        "group": "b3f02015c1814a64",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Medición del sensor: ",
+        "format": "{{value}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 620,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f8a2253abc755aa0",
+        "type": "change",
+        "z": "34dce6c838a0bcbd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.humidity",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "7d194cc8267cfdd8",
+                "0c923fce434cc936"
+            ]
+        ]
+    },
+    {
+        "id": "50354176fafe351e",
+        "type": "change",
+        "z": "34dce6c838a0bcbd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.raw",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 320,
+        "wires": [
+            [
+                "70649052f981115b",
+                "957aa4af95455269"
+            ]
+        ]
+    },
+    {
+        "id": "957aa4af95455269",
+        "type": "switch",
+        "z": "34dce6c838a0bcbd",
+        "name": "Control bomba",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "30",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "70",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 600,
+        "y": 460,
+        "wires": [
+            [
+                "9c1c20b153518d47"
+            ],
+            [
+                "c251f6429aae6807"
+            ]
+        ]
+    },
+    {
+        "id": "9c1c20b153518d47",
+        "type": "change",
+        "z": "34dce6c838a0bcbd",
+        "name": "Set Encendido",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Encendido",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 420,
+        "wires": [
+            [
+                "890c7f6a3a5f9eaf"
+            ]
+        ]
+    },
+    {
+        "id": "c251f6429aae6807",
+        "type": "change",
+        "z": "34dce6c838a0bcbd",
+        "name": "Set Apagado",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Apagado",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 500,
+        "wires": [
+            [
+                "890c7f6a3a5f9eaf"
+            ]
+        ]
+    },
+    {
+        "id": "890c7f6a3a5f9eaf",
+        "type": "ui_text",
+        "z": "34dce6c838a0bcbd",
+        "group": "b3f02015c1814a64",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Estado de la bomba",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 980,
+        "y": 460,
+        "wires": []
+    },
+    {
         "id": "43f8f5508c703b94",
         "type": "mqtt-broker",
         "name": "EMQX",
@@ -55,6 +329,28 @@
         "sessionExpiry": ""
     },
     {
+        "id": "2b9c08c8f953350b",
+        "type": "ui_group",
+        "name": "Sistema de riego automático",
+        "tab": "125bbe500474b253",
+        "order": 3,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b3f02015c1814a64",
+        "type": "ui_group",
+        "name": "Medición Sensorial",
+        "tab": "125bbe500474b253",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "4838efbccdf8efa2",
         "type": "tls-config",
         "name": "",
@@ -67,5 +363,13 @@
         "servername": "",
         "verifyservercert": true,
         "alpnprotocol": ""
+    },
+    {
+        "id": "125bbe500474b253",
+        "type": "ui_tab",
+        "name": "Node Red - MQTT",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     }
 ]
