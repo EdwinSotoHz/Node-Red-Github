@@ -1,12 +1,16 @@
 module.exports = {
-    uiPort: process.env.PORT || 1880,  // Usa el puerto dinámico de Render
-    credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET || "tu-clave-secreta",
-    adminAuth: null,  // Configura autenticación si es necesario
-    httpStatic: "./public",  // Carpeta para archivos estáticos (opcional)
-    flowFile: "flows.json",  // Guarda los flujos en este archivo
+    uiPort: process.env.PORT || 1880,
+    credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET || "edpi",
     editorTheme: {
     projects: {
         enabled: false  // Desactiva proyectos si no los usas
     }
+    },
+    // ¡Añade los nodos que quieras cargar por defecto!
+    functionGlobalContext: {
+      // Ejemplo: módulos externos
+    },
+    runtimeState: {
+        enabled: false
     }
 };
