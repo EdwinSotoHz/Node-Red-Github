@@ -1,0 +1,71 @@
+[
+    {
+        "id": "b6c2108bb6c5126a",
+        "type": "mqtt in",
+        "z": "34dce6c838a0bcbd",
+        "name": "Topic: test001",
+        "topic": "test001",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "43f8f5508c703b94",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "f8a2253abc755aa0",
+                "50354176fafe351e",
+                "2adaf70baceee3df"
+            ]
+        ]
+    },
+    {
+        "id": "43f8f5508c703b94",
+        "type": "mqtt-broker",
+        "name": "EMQX",
+        "broker": "bff1461d.ala.us-east-1.emqxsl.com",
+        "port": "8883",
+        "tls": "4838efbccdf8efa2",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": true,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4838efbccdf8efa2",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "emqxsl-ca.crt",
+        "servername": "",
+        "verifyservercert": true,
+        "alpnprotocol": ""
+    }
+]
