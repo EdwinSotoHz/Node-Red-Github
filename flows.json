@@ -307,6 +307,8 @@
         "broker": "bff1461d.ala.us-east-1.emqxsl.com",
         "port": "8883",
         "tls": "4838efbccdf8efa2",
+        "username": "edpi",
+        "password": "edpi",
         "clientid": "",
         "autoConnect": true,
         "usetls": true,
